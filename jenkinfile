@@ -4,20 +4,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                bat 'javac jenkinjava.java'
-                echo 'building'
-            }
-        }
-        stage('test') {
-            steps {
-                echo 'testing'
-            }
-        }
-        stage('deploy') {
-            steps {
-               
-                bat 'java jenkinjava'
-                echo 'deploying'
+               publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '', reportFiles: 'jenkinhtml.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
             }
         }
     }
